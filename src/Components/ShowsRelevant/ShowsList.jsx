@@ -24,7 +24,7 @@ const ShowsList =( )=>{
     )
 
     const showsToRender = allShows.map( (eachShow)=>
-        <div className="show-card-styles">
+        <div key={eachShow.id} className="show-card-styles">
             <h4>{ eachShow.title }</h4>
             <h6>{ eachShow.duration }</h6>
         </div>

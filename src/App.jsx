@@ -8,6 +8,7 @@ import './App.css'
 import NavBar from './Components/NavBar.jsx'
 
 import ShowsList from './Components/ShowsRelevant/ShowsList'
+import ShowsNewForm from './Components/ShowsRelevant/ShowsNewForm'
 
 // console.log( "Some Default Environment Keys: " , import.meta.env )
 
@@ -40,7 +41,7 @@ function App() {
 
             <Route path='/' element={ <h1>Home</h1> } />
             <Route path='/shows' element={ <ShowsList /> } />
-            <Route path='/shows/new' element={ <h1>Form For New Show</h1> } />
+            <Route path='/shows/new' element={ <ShowsNewForm /> } />
 
             <Route path='/movies' element={ <h1>All Movies</h1> } />
 
