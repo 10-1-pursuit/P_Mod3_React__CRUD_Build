@@ -12,11 +12,10 @@ const ShowsNewForm =( props )=>{
     const [newTitle, setNewTitle] = useState( "" )
     const [newDescription, setNewDescription] = useState( "" )
 
-    // NOTE TO SAME: cool controlled form feature 
+    // !!  NOTE TO SAME: cool controlled form feature 
 
 
     function handleNewShowFormSubmit(e){
-
         e.preventDefault()
 
         const newShowObj = {
@@ -36,6 +35,25 @@ const ShowsNewForm =( props )=>{
         }
         console.log("newShowObj we are CREATING: ", newShowObj)
 
+
+        // POST : [C]RUD ::  CREATE
+            const options = {
+
+                method: "POST",
+                headers: {
+                    Accept: "application.json",
+                    "Content-Type": 'application/json'
+                },
+                body: JSON.stringify( newShowObj )
+
+            }
+        fetch( "http://localhost:8888/api/shows" , options )
+            .then( r => r.json())
+            .then( console.log )
+            .catch( err => console.log(err))
+
+
+        ////  "Clearing The Form Inputs"
         setNewCountry( "" )
         setNewReleaseYear( 1900 )
         setNewRating( "" )
