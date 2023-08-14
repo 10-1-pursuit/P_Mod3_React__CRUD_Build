@@ -25,12 +25,15 @@ function App() {
     <>
       <Router>
 
+
         <header>
           <h1>ScreenViews</h1>
-          <h2>-TEST-{ var10_1 }</h2>
+            {/* <h2>-TEST-{ var10_1 }</h2> */}
             <br/>
           <NavBar />
         </header>
+
+
 
 
           <Routes>
@@ -42,9 +45,6 @@ function App() {
             <Route path='/movies' element={ <h1>All Movies</h1> } />
 
           </Routes>
-
-
-
 
 
 
@@ -88,6 +88,10 @@ export default App
   Read            GET         movies/
   Update
   Destroy
+
+
+
+  !!  GET  ->  POST  -> GET/:id (useParams)  ->  DELETE/:id  ->  PATCH/:id
 
 
 */

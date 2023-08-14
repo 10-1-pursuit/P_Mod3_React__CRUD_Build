@@ -1,0 +1,19 @@
+.shows-list-styles {
+    background-color: rgb(232, 177, 239);
+}
+
+
+.display-show-cards {
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+}
+
+
+.show-card-styles {
+
+    border: 10px solid navy;
+    margin: 10px;
+    border-radius: 10%;
+}
