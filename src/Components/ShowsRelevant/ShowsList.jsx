@@ -23,11 +23,68 @@ const ShowsList =( )=>{
         [ ]     
     )
 
-    const showsToRender = allShows.map( (eachShow)=>
-        <div key={eachShow.id} className="show-card-styles">
-            <h4>{ eachShow.title }</h4>
-            <h6>{ eachShow.duration }</h6>
-        </div>
+    function handleDeleteClick( showToDelete ){
+        console.log("be gone!", showToDelete )
+
+        //// Frontend Logic
+        // flter
+        const filterResult = allShows.filter( (eachShow)=>{
+            if(eachShow.id !== showToDelete.id){
+                return eachShow
+            }
+        } )
+        console.log("filterResult: ", filterResult)
+
+        //// For Optimistic Rendering
+        // setAllShows( [...filterResult] )
+        
+
+        //// Backend Logic
+        // send a delete fetch reuqest
+        // /api/shows/:id
+        fetch( `http://localhost:8888/api/shows/${showToDelete.id}` , {method: "DELETE"} )
+            .then( r => r.json() )
+            .then( (emptyObj) => {
+                console.log(emptyObj) 
+                //// For Pesimisitc Rendering
+                setAllShows( [...filterResult] )
+
+            
+            } )
+
+
+    }
+    function handleEdit(){
+
+    }
+    const [toggleEdit, setToggleEdit] = useState(false)
+
+    const[formObj, setFormObj] = useState( {title: "", duration: ""} )
+    // individual card component
+    // useEffect() -> fetches that specific object but its /:id
+
+    const showsToRender = allShows.map( (eachShow)=>{
+
+            return toggleEdit ?
+
+                (<form className="edit-form">
+                    <label>
+                        <input />
+                        <button onClick={ (se)=> setToggleEdit( !toggleEdit ) } >close edit</button>
+
+                    </label>
+                </form>)
+
+            :
+
+            (<div key={eachShow.id} className="show-card-styles">
+                <h4>{ eachShow.title }</h4>
+                <h6>{ eachShow.duration }</h6>
+                <button onClick={ (se)=> handleDeleteClick(eachShow) } >X</button>
+                <button onClick={ (se)=> setToggleEdit(!toggleEdit) } >edit :)</button>
+            </div>)
+        
+        }
     )
 
 
